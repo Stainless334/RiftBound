@@ -1,18 +1,51 @@
 [gd_scene format=3 uid="uid://bweg3mtj2wvj7"]
 
 [ext_resource type="Script" uid="uid://jgb8p7s187r0" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bnwplfynlwjjf" path="res://player.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bxetxjgkga0x3" path="res://assets/characters/Godot - UE/Superhero_Male_FullBody.gltf" id="3_h2yge"]
+[ext_resource type="AnimationLibrary" uid="uid://dqc3hqj11870t" path="res://assets/characters/Godot - UE/animations/UAL1_Standard.glb" id="4_1bvp3"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mdbhr"]
+[sub_resource type="BoxMesh" id="BoxMesh_duden"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_duden"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_duden"]
 
 [node name="Main" type="Node3D" unique_id=661402258]
 script = ExtResource("1_ig7tw")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1133668433]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-mesh = SubResource("PlaneMesh_mdbhr")
+transform = Transform3D(100, 0, 0, 0, 0.2, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1962409384]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=867755828]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8, 12)
+[node name="RiftPillar" type="MeshInstance3D" parent="." unique_id=1481409979]
+transform = Transform3D(0.8, 0, 0, 0, 2, 0, 0, 0, 0.8, 3, 1, 0)
+mesh = SubResource("BoxMesh_duden")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2078399350]
+script = ExtResource("2_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1357012472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_duden")
+
+[node name="CameraPivot" type="Node3D" parent="Player" unique_id=153074590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot" unique_id=61854745]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 6)
+
+[node name="CharacterModel" parent="Player" unique_id=111789794 instance=ExtResource("3_h2yge")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.03983643, -0.025253862, -0.04897189)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1384632599]
+libraries/UAL1_Standard = ExtResource("4_1bvp3")
+
+[node name="FloorBody" type="StaticBody3D" parent="." unique_id=1821753910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorBody" unique_id=1671001366]
+transform = Transform3D(100, 0, 0, 0, 0.2, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("BoxShape3D_duden")
