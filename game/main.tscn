@@ -11,6 +11,24 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_duden"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_mdbhr"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdbhr"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6fmq"]
+albedo_color = Color(0.44339713, 0.21331808, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdbhr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_duden"]
+material = SubResource("StandardMaterial3D_mdbhr")
+radius = 1.0
+height = 2.0
+radial_segments = 16
+rings = 8
+
 [node name="Main" type="Node3D" unique_id=661402258]
 script = ExtResource("1_ig7tw")
 
@@ -37,10 +55,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot" unique_id=61854745]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 6)
 
-[node name="CharacterModel" parent="Player" unique_id=111789794 instance=ExtResource("3_h2yge")]
+[node name="Character" parent="Player" unique_id=111789794 instance=ExtResource("3_h2yge")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.03983643, -0.025253862, -0.04897189)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1384632599]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Character" unique_id=1798216228]
 libraries/UAL1_Standard = ExtResource("4_1bvp3")
 
 [node name="FloorBody" type="StaticBody3D" parent="." unique_id=1821753910]
@@ -49,3 +67,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorBody" unique_id=1671001366]
 transform = Transform3D(100, 0, 0, 0, 0.2, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("BoxShape3D_duden")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=294088234]
+
+[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer" unique_id=1280083568]
+offset_left = 22.0
+offset_top = 30.0
+offset_right = 272.0
+offset_bottom = 57.0
+value = 100.0
+
+[node name="Environment" type="Node3D" parent="." unique_id=1063676328]
+
+[node name="Terrain" type="MeshInstance3D" parent="Environment" unique_id=1090657834]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 1, -341.93896, -0.31149292, -18.556442)
+mesh = SubResource("PlaneMesh_mdbhr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Terrain" unique_id=1757808337]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Terrain/StaticBody3D" unique_id=518438117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_mdbhr")
+
+[node name="Mountain_01" type="MeshInstance3D" parent="Environment" unique_id=506079981]
+transform = Transform3D(12, 0, 0, 0, 10, 0, 0, 0, 12, -20, 8, -20)
+material_override = SubResource("StandardMaterial3D_k6fmq")
+mesh = SubResource("SphereMesh_duden")
+
+[node name="Mountain_02" type="MeshInstance3D" parent="Environment" unique_id=66079294]
+transform = Transform3D(10, 0, 0, 0, 12, 0, 0, 0, 11, 20, 7, -20)
+material_override = SubResource("StandardMaterial3D_k6fmq")
+mesh = SubResource("SphereMesh_duden")
+
+[node name="Mountain_03" type="MeshInstance3D" parent="Environment" unique_id=1487529112]
+transform = Transform3D(13, 0, 0, 0, 8, 0, 0, 0, 10, -20, 6, 20)
+material_override = SubResource("StandardMaterial3D_k6fmq")
+mesh = SubResource("SphereMesh_duden")
+
+[node name="Mountain_04" type="MeshInstance3D" parent="Environment" unique_id=164365882]
+transform = Transform3D(11, 0, 0, 0, 14, 0, 0, 0, 12, 20, 9, 20)
+material_override = SubResource("StandardMaterial3D_k6fmq")
+mesh = SubResource("SphereMesh_duden")
