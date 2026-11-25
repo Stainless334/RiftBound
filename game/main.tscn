@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://bnwplfynlwjjf" path="res://player.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bxetxjgkga0x3" path="res://assets/characters/Godot - UE/Superhero_Male_FullBody.gltf" id="3_h2yge"]
 [ext_resource type="AnimationLibrary" uid="uid://dqc3hqj11870t" path="res://assets/characters/Godot - UE/animations/UAL1_Standard.glb" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dldqtrhqqcbiy" path="res://assets/characters/Godot - UE/environment/trees/GLB/textures/textures/forrest_ground_01_diff_4k.jpg" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://htyvhq548nl0" path="res://assets/characters/Godot - UE/environment/trees/GLB/tree_pine_02.glb" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dp4reypcswpho" path="res://assets/characters/Godot - UE/environment/trees/GLB/tree_oak_01.glb" id="6_7mycd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_duden"]
 
@@ -12,13 +15,29 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_duden"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mdbhr"]
-size = Vector2(100, 100)
+size = Vector2(160, 160)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(0.36846963, 0.5379376, 0.2712552, 1)
+albedo_texture = ExtResource("5_272bh")
+uv1_scale = Vector3(20, 1, 1)
+uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdbhr"]
-size = Vector3(100, 0.2, 100)
+size = Vector3(160, 0.2, 160)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6fmq"]
 albedo_color = Color(0.44339713, 0.21331808, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lquwl"]
+top_radius = 0.2
+bottom_radius = 1.0
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7mycd"]
+top_radius = 0.2
+bottom_radius = 1.0
+radial_segments = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdbhr"]
 
@@ -26,8 +45,40 @@ albedo_color = Color(0.44339713, 0.21331808, 0, 1)
 material = SubResource("StandardMaterial3D_mdbhr")
 radius = 1.0
 height = 2.0
-radial_segments = 16
+radial_segments = 12
 rings = 8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_272bh"]
+top_radius = 0.2
+bottom_radius = 1.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c75o"]
+albedo_color = Color(0.4, 0.3137255, 0.26666668, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mdbhr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2c75o"]
+top_radius = 0.2
+bottom_radius = 0.35
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.34901962, 0.2509804, 0.1764706, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_duden"]
+top_radius = 0.0
+bottom_radius = 1.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt8j1"]
+albedo_color = Color(0.09019608, 0.27058825, 0.1764706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_japhh"]
+albedo_color = Color(0.1254902, 0.36078432, 0.21568628, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu1in"]
+albedo_color = Color(0.1764706, 0.4392157, 0.25490198, 1)
 
 [node name="Main" type="Node3D" unique_id=661402258]
 script = ExtResource("1_ig7tw")
@@ -80,8 +131,9 @@ value = 100.0
 [node name="Environment" type="Node3D" parent="." unique_id=1063676328]
 
 [node name="Terrain" type="MeshInstance3D" parent="Environment" unique_id=1090657834]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 1, -341.93896, -0.31149292, -18.556442)
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 1, -342.12082, -0.31149292, -19.360527)
 mesh = SubResource("PlaneMesh_mdbhr")
+surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Terrain" unique_id=1757808337]
 
@@ -90,21 +142,123 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_mdbhr")
 
 [node name="Mountain_01" type="MeshInstance3D" parent="Environment" unique_id=506079981]
-transform = Transform3D(12, 0, 0, 0, 10, 0, 0, 0, 12, -20, 8, -20)
+transform = Transform3D(12, 0, 0, 0, 8, 0, 0, 0, 12, -20, 8, -20)
 material_override = SubResource("StandardMaterial3D_k6fmq")
-mesh = SubResource("SphereMesh_duden")
+mesh = SubResource("CylinderMesh_lquwl")
 
 [node name="Mountain_02" type="MeshInstance3D" parent="Environment" unique_id=66079294]
-transform = Transform3D(10, 0, 0, 0, 12, 0, 0, 0, 11, 20, 7, -20)
+transform = Transform3D(10, 0, 0, 0, 12, 0, 0, 0, 10, 20, 7, -20)
 material_override = SubResource("StandardMaterial3D_k6fmq")
-mesh = SubResource("SphereMesh_duden")
+mesh = SubResource("CylinderMesh_7mycd")
 
 [node name="Mountain_03" type="MeshInstance3D" parent="Environment" unique_id=1487529112]
-transform = Transform3D(13, 0, 0, 0, 8, 0, 0, 0, 10, -20, 6, 20)
+transform = Transform3D(14, 0, 0, 0, 7, 0, 0, 0, 12, -20, 6, 20)
 material_override = SubResource("StandardMaterial3D_k6fmq")
 mesh = SubResource("SphereMesh_duden")
 
 [node name="Mountain_04" type="MeshInstance3D" parent="Environment" unique_id=164365882]
-transform = Transform3D(11, 0, 0, 0, 14, 0, 0, 0, 12, 20, 9, 20)
+transform = Transform3D(11, 0, 0, 0, 9, 0, 0, 0, 11, 20, 9, 20)
 material_override = SubResource("StandardMaterial3D_k6fmq")
-mesh = SubResource("SphereMesh_duden")
+mesh = SubResource("CylinderMesh_272bh")
+
+[node name="Rock_01" type="MeshInstance3D" parent="Environment" unique_id=1620918269]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2, -35, 1.5, -20)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_02" type="MeshInstance3D" parent="Environment" unique_id=974348908]
+transform = Transform3D(2, 0, 0, 0, 1.2, 0, 0, 0, 1.5, -20, 1.5, -35)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_03" type="MeshInstance3D" parent="Environment" unique_id=1535856721]
+transform = Transform3D(1.5, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 35, 1.5, -20)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_04" type="MeshInstance3D" parent="Environment" unique_id=293543269]
+transform = Transform3D(3, 0, 0, 0, 1.3, 0, 0, 0, 1.5, 20, 1.5, -35)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_05" type="MeshInstance3D" parent="Environment" unique_id=631469579]
+transform = Transform3D(1.7, 0, 0, 0, 1.5, 0, 0, 0, 2, 35, 1.5, 4)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_06" type="MeshInstance3D" parent="Environment" unique_id=473171185]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2, -20, 1.5, 35)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_07" type="MeshInstance3D" parent="Environment" unique_id=1074534664]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2, 35, 1.5, 20)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="Rock_08" type="MeshInstance3D" parent="Environment" unique_id=643228697]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 2, 20, 1.5, 35)
+material_override = SubResource("StandardMaterial3D_2c75o")
+mesh = SubResource("SphereMesh_mdbhr")
+
+[node name="PineTrees" type="Node3D" parent="Environment" unique_id=285480838]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30, 0, -10)
+
+[node name="Trunk" type="MeshInstance3D" parent="Environment/PineTrees" unique_id=368910783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CylinderMesh_2c75o")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="Foliage_Lower" type="MeshInstance3D" parent="Environment/PineTrees" unique_id=622244444]
+transform = Transform3D(1.7, 0, 0, 0, 1.1, 0, 0, 0, 1.7, 0, 2.2, 0)
+mesh = SubResource("CylinderMesh_duden")
+surface_material_override/0 = SubResource("StandardMaterial3D_gt8j1")
+
+[node name="Foliage_Middle" type="MeshInstance3D" parent="Environment/PineTrees" unique_id=588895346]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 0, 3.2, 0)
+mesh = SubResource("CylinderMesh_duden")
+surface_material_override/0 = SubResource("StandardMaterial3D_japhh")
+
+[node name="Foliage_Top" type="MeshInstance3D" parent="Environment/PineTrees" unique_id=1865250202]
+transform = Transform3D(0.85, 0, 0, 0, 0.9, 0, 0, 0, 0.85, 0, 4.1, 0)
+mesh = SubResource("CylinderMesh_duden")
+surface_material_override/0 = SubResource("StandardMaterial3D_uu1in")
+
+[node name="PineTree_01" parent="Environment/PineTrees" unique_id=888240021 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="PineTree_02" parent="Environment/PineTrees" unique_id=1766692408 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 15, 0, -10)
+
+[node name="PineTree_03" parent="Environment/PineTrees" unique_id=1590149492 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 21.460567, 0, -8.886467)
+
+[node name="PineTree_04" parent="Environment/PineTrees" unique_id=1696994982 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.84736824, 0, 8.696278)
+
+[node name="PineTree_05" parent="Environment/PineTrees" unique_id=836578671 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.91531, 0, 18.304083)
+
+[node name="PineTree_06" parent="Environment/PineTrees" unique_id=2050686300 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 29.011196, 0, -7.0164833)
+
+[node name="PineTree_07" parent="Environment/PineTrees" unique_id=383463893 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 22.376171, 0, 8.261789)
+
+[node name="PineTree_08" parent="Environment/PineTrees" unique_id=697437365 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.28284273, 0, 0.28284273, 0, 0.4, 0, -0.28284273, 0, 0.28284273, 6.857299, 0, 9.637623)
+
+[node name="PineTree_09" parent="Environment/PineTrees" unique_id=1130338279 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -3.5282116, 0, 18.637667)
+
+[node name="PineTree_10" parent="Environment/PineTrees" unique_id=529062002 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 25.702408, 0, 0.3147068)
+
+[node name="PineTree_11" parent="Environment/PineTrees" unique_id=1178557992 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.6561623, 0, -4.1862316)
+
+[node name="PineTree_12" parent="Environment/PineTrees" unique_id=2030758575 instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1519, 0, 15.571899)
+
+[node name="OakTree_01" parent="." unique_id=217063996 instance=ExtResource("6_7mycd")]
+transform = Transform3D(0.4330127, 0, 0.25, 0, 0.5, 0, -0.25, 0, 0.4330127, -11.122834, 0, 10)
