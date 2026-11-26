@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dldqtrhqqcbiy"
-path.s3tc="res://.godot/imported/forrest_ground_01_diff_4k.jpg-e4bf82444df38d4206a772e300b01286.s3tc.ctex"
+uid="uid://cmchpvq7etjsy"
+path.s3tc="res://.godot/imported/rocky-outcrop_rocky-outcrop_body_metallic-rocky-outcrop_body_roughness.jpg-5cadc0fb255efc155ea1f827d5c2f15b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "3fbbe32506a752e9c9ef88d9a470cf8f"
+}
 
 [deps]
 
-source_file="res://assets/characters/Godot - UE/environment/trees/GLB/textures/textures/forrest_ground_01_diff_4k.jpg"
-dest_files=["res://.godot/imported/forrest_ground_01_diff_4k.jpg-e4bf82444df38d4206a772e300b01286.s3tc.ctex"]
+source_file="res://assets/characters/Godot - UE/environment/trees/GLB/mountains/rocky-outcrop_rocky-outcrop_body_metallic-rocky-outcrop_body_roughness.jpg"
+dest_files=["res://.godot/imported/rocky-outcrop_rocky-outcrop_body_metallic-rocky-outcrop_body_roughness.jpg-5cadc0fb255efc155ea1f827d5c2f15b.s3tc.ctex"]
 
 [params]
 

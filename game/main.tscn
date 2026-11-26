@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://bnwplfynlwjjf" path="res://player.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bxetxjgkga0x3" path="res://assets/characters/Godot - UE/Superhero_Male_FullBody.gltf" id="3_h2yge"]
 [ext_resource type="AnimationLibrary" uid="uid://dqc3hqj11870t" path="res://assets/characters/Godot - UE/animations/UAL1_Standard.glb" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://dldqtrhqqcbiy" path="res://assets/characters/Godot - UE/environment/trees/GLB/textures/textures/forrest_ground_01_diff_4k.jpg" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://htyvhq548nl0" path="res://assets/characters/Godot - UE/environment/trees/GLB/tree_pine_02.glb" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dp4reypcswpho" path="res://assets/characters/Godot - UE/environment/trees/GLB/tree_oak_01.glb" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bubj4f8wvi5uj" path="res://assets/characters/Godot - UE/environment/trees/GLB/mountains/rocky-outcrop.glb" id="7_272bh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_duden"]
 
@@ -19,7 +19,6 @@ size = Vector2(160, 160)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(0.36846963, 0.5379376, 0.2712552, 1)
-albedo_texture = ExtResource("5_272bh")
 uv1_scale = Vector3(20, 1, 1)
 uv1_triplanar = true
 
@@ -262,3 +261,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 15.1519, 0, 15.571899)
 
 [node name="OakTree_01" parent="." unique_id=217063996 instance=ExtResource("6_7mycd")]
 transform = Transform3D(0.4330127, 0, 0.25, 0, 0.5, 0, -0.25, 0, 0.4330127, -11.122834, 0, 10)
+
+[node name="rocky-outcrop2" parent="." unique_id=172361175 instance=ExtResource("7_272bh")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -114.58281, -3.4580903, -3.1897812)
